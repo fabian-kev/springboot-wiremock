@@ -30,6 +30,7 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:2.31.0"
 
     runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.h2database:h2'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

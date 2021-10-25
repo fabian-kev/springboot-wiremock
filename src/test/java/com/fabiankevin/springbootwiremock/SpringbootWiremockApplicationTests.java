@@ -11,6 +11,7 @@ import com.fabiankevin.springbootwiremock.remoteservice.CardRemoteService;
 import com.fabiankevin.springbootwiremock.service.MotelPaymentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.protocol.UriPatternType;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import org.assertj.core.api.Assertions;
@@ -110,6 +111,9 @@ class SpringbootWiremockApplicationTests {
         PaymentResult result = motelPaymentService.pay();
         assertThat(result.getSuccess()).isEqualTo("true");
         assertThat(result.getTransactionId()).isEqualTo(paymentResultEnvelope.getTransactionId());
+
+
+        verify(getRequestedFor(urlMatching("/cards/balance/.*")));
     }
 
 
